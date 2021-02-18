@@ -30,9 +30,7 @@
           console.log("Signed in as: " + xhr.responseText);
           if (xhr.responseText == "success") {
             signOut();
-            location.assign(
-              "https://enigmatic-retreat-40923.herokuapp.com/dashboard"
-            );
+            location.assign("/dashboard");
           }
         };
         xhr.send(JSON.stringify({ token: id_token }));
