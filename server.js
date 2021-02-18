@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000;
 //Middleware
 
 app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
+app.get("/", checkAuthenticated, (req, res) => {
   res.render("index");
 });
 
@@ -97,8 +97,8 @@ function checkAuthenticated(req, res, next) {
 }
 
 let port = process.env.PORT;
-if (port==null || port=="") {
-    port=5000;
+if (port == null || port == "") {
+  port = 5000;
 }
 
 app.listen(PORT, () => {
